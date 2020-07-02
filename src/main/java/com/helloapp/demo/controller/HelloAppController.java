@@ -1,5 +1,6 @@
-package com.helloapp.demo;
+package com.helloapp.demo.controller;
 
+import com.helloapp.demo.model.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -21,6 +22,11 @@ public class HelloAppController {
     @GetMapping("/param/{name}")
     public String sayHelloParam(@PathVariable(value = "name") String name) {
         return "Hello " + name + " !";
+    }
+
+    @PostMapping("/post")
+    public String sayHello(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " !";
     }
 
 }
